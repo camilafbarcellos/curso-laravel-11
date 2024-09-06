@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // returns a view with the first user
+    // returns a view with all users
     public function index() {
-        $user = User::first();
+        // $users = User::all(); // without pagination
+        $users = User::paginate(20); // with pagination (default: 15)
 
-        return view('admin.users.index', compact('user'));
+        return view('admin.users.index', compact('users'));
     }
 }
