@@ -7,9 +7,10 @@
 
     <a href="{{ route('users.create') }}">Novo</a>
 
-    @if (session()->has('success'))
-        {{ session('success') }}
-    @endif
+    {{-- @include('admin.includes.errors') --}}
+
+    {{-- when working with Breeze --}}
+    <x-alert/>
 
     <table>
         <thead>
