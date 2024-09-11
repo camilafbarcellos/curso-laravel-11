@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -86,6 +87,11 @@ class UserController extends Controller
     // destroys a user
     public function destroy(string $id)
     {
+        // using Gates to prevent non-admins from deleting users
+        // if(Gate::denies('is-admin')) {
+        //     return back()->with('message', 'Apenas administradores podem excluir usuários!');
+        // }
+
         if(!$user = User::find($id)) {
             return redirect()->route('users.index')->with('message', 'Usuário não encontrado');
         }
