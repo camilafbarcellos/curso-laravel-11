@@ -13,11 +13,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-    <header>header</header>
-    {{-- dynamic content --}}
-    @yield('content')
-    <footer>footer</footer>
+<body class="bg-gray-100 dark:bg-gray-900">
+    @include('layouts.navigation')
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px8">
+        {{-- dynamic content --}}
+        @yield('content')
+    </div>
 </body>
 
 </html>
