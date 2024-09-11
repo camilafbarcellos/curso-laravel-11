@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // check the user is admin
+    public function isAdmin(): bool
+    {
+        return in_array($this->email, (array) config('custom.admins'));
+    }
 }
