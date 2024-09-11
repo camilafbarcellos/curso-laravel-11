@@ -10,7 +10,8 @@ Route::get('/', function () {
 });
 
 // users routes with auth middleware
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
+    // Route::resource('/users', UserController::class); // equivalent to all the routes below
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
