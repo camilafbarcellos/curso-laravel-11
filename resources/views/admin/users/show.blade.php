@@ -12,9 +12,15 @@
 
     <x-alert/>
 
+    {{-- only admins can delete users --}}
+    @can('is-admin')
+    {{-- user cannot delete himself --}}
+    @can('owner', $user)
     <form action="{{ route('users.destroy', $user->id) }}" method="post">
         @csrf
         @method('DELETE')
         <button type="submit">Excluir</button>
     </form>
+    @endcan
+    @endcan
 @endsection
